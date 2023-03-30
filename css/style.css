@@ -7,7 +7,7 @@ html {
 
 #header {
   text-align: center;
-  height: 50px;
+  height: 7%;
   background-color: #800000;
   margin: 0;
   padding-top: 15px;
@@ -16,7 +16,7 @@ html {
 }
 
 #map-panel {
-  height: calc(100vh - 80px);
+  height: calc(100vh - 7% - 30px);
 }
 
 #filter-btn {
