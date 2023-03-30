@@ -70,7 +70,7 @@ require([
 
     // Splash Modal
     $(document).ready(() => {
-        $("#splash")[0].open = true;
+       // $("#splash")[0].open = true;
     });
     $(document).ready(function(){
 
