@@ -1,11 +1,5 @@
-body {
-  min-height: 100vh;
-  /* mobile viewport bug fix */
-  min-height: -webkit-fill-available;
-}
-
-html {
-  height: -webkit-fill-available;
+:root {
+  --doc-height: 100%;
 }
 
 html {
