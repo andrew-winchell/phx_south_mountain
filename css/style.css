@@ -32,9 +32,3 @@ body {
   top: 0;
   z-index: 3;
 }
-
-#action-pad {
-  position: absolute;
-  bottom: 20px;
-  max-width: 10vw;
-}

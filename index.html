@@ -27,21 +27,22 @@
 
   <calcite-shell content-behind>
 
-    <calcite-button appearance="transparent" kind="inverse" id="filter-btn" icon-start="filter" scale="l"></calcite-button>
     <h2 id="header" slot="header">
       <span>South Mountain<br>Park & Preserve</span>
     </h2>
-    <calcite-button appearance="transparent" kind="inverse" id="list-btn" icon-start="list" scale="l"></calcite-button>
 
-    <calcite-panel id="map-panel">
+    <calcite-panel id="map-panel"></calcite-panel>
 
-      <calcite-action-pad layout="horizontal" id="action-pad">
+    <calcite-panel id="footer" slot="footer">
+      <calcite-action-bar layout="horizontal" scale="l" id="action-bar" expand-disabled expanded>
         <calcite-action text="Add" icon="plus"></calcite-action>
-        <calcite-action text="Save" icon="save"></calcite-action>
+        <calcite-action text="Filter" icon="filter"></calcite-action>
         <calcite-action text="Layers" icon="layers"></calcite-action>
         <calcite-action text="Basemaps" icon="layer-basemap"></calcite-action>
-        <calcite-tooltip slot="expand-tooltip">Toggle Action Bar</calcite-tooltip>
-      </calcite-action-pad></calcite-panel>
+        <calcite-action text="Layers" icon="layers"></calcite-action>
+        <calcite-action text="Basemaps" icon="layer-basemap"></calcite-action>
+      </calcite-action-bar>
+    </calcite-panel>
 
   </calcite-shell>
 
