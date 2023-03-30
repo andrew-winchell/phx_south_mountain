@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>South Mountain Preserve</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!--Calcite CDN CSS-->
+  <script type="module" src="https://js.arcgis.com/calcite-components/1.0.7/calcite.esm.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/1.0.7/calcite.css" />
+
+  <!--ArcGIS Maps SDK for JavaScript 4.26-->
+  <script src="https://js.arcgis.com/4.26/"></script>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.26/esri/themes/light/main.css" />
+
+  <!--[if IE<9]
+    <link rel="stylesheet" href="css.style.css">
+  <![endIf]-->
+</head>
+
+<body>
+  <!--<calcite-loader></calcite-loader>-->
+
+  <calcite-shell content-behind>
+
+    <div>
+      <calcite-button appearance="transparent" kind="inverse" id="filter-btn" icon-start="filter" scale="l"></calcite-button>
+      <h2 id="header" slot="header">
+        <span>South Mountain<br>Park & Preserve</span>
+      </h2>
+      <calcite-button appearance="transparent" kind="inverse" id="list-btn" icon-start="list" scale="l"></calcite-button>
+    </div>
+
+    <calcite-panel id="map-panel">
+
+      <calcite-action-pad layout="horizontal" id="action-pad">
+        <calcite-action text="Add" icon="plus"></calcite-action>
+        <calcite-action text="Save" icon="save"></calcite-action>
+        <calcite-action text="Layers" icon="layers"></calcite-action>
+        <calcite-action text="Basemaps" icon="layer-basemap"></calcite-action>
+        <calcite-tooltip slot="expand-tooltip">Toggle Action Bar</calcite-tooltip>
+      </calcite-action-pad></calcite-panel>
+
+  </calcite-shell>
+
+  <calcite-modal aria-labelledby="modal-title" id="splash" scale="s" width="s">
+    <div slot="header">
+      Welcome
+    </div>
+
+    <div slot="content">
+      The purpose of this application...
+    </div>
+  </calcite-modal>
+
+
+
+  <!--Reference JS files and libraries-->
+  <script src="lib/jquery-3.6.0.js"></script>
+  <script type="module" src="js/main.js"></script>
+
+</body>
+
+</html>

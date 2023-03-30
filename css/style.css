@@ -1,0 +1,42 @@
+
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+#header {
+  text-align: center;
+  height: 50px;
+  background-color: #800000;
+  margin: 0;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: #FFFFFF;
+}
+
+#map-panel {
+  height: calc(100vh - 80px);
+}
+
+#filter-btn {
+  margin: 22px 0px 0px 0px;
+  position: absolute;
+  left: 12.5%;
+  top: 0;
+  z-index: 3;
+}
+
+#list-btn {
+  margin: 22px 0px 0px 0px;
+  position: absolute;
+  right: 12.5%;
+  top: 0;
+  z-index: 3;
+}
+
+#action-pad {
+  position: absolute;
+  bottom: 20px;
+  max-width: 10vw;
+}
