@@ -4,25 +4,23 @@ html {
   line-height: 1.4;
 }
 
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
 #header {
   text-align: center;
   background-color: #800000;
   margin: 0;
   color: #FFFFFF;
+  height: 70px;
 }
 
-#filter-btn {
-  margin: 22px 0px 0px 0px;
-  position: absolute;
-  left: 12.5%;
-  top: 0;
-  z-index: 3;
+#map-panel {
+  height: calc(100vh - 140px);
 }
 
-#list-btn {
-  margin: 22px 0px 0px 0px;
-  position: absolute;
-  right: 12.5%;
-  top: 0;
-  z-index: 3;
+#footer {
+  height: 70px;
 }
