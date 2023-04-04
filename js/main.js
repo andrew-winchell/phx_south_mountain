@@ -70,8 +70,12 @@ require([
 
     // Splash Modal
     $(document).ready(() => {
-       // $("#splash")[0].open = true;
+       $("#splash")[0].open = true;
     });
+
+    $("#splash-btn").on("click", (e) => {
+        $("#splash")[0].open = false;
+    })
 
     function switchView () {
         const is3D = appConfig.activeView.type === "3d";

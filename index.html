@@ -32,25 +32,36 @@
   <calcite-panel id="map-panel"></calcite-panel>
 
   <calcite-panel id="footer">
-    <calcite-action-bar layout="horizontal" scale="l" id="action-bar" expand-disabled expanded>
-      <calcite-action text="Add" icon="plus"></calcite-action>
+    <calcite-action-bar layout="horizontal" scale="m" id="action-bar">
+      <calcite-action text="3D View" icon="globe"></calcite-action>
+      <calcite-action text="2D View" icon="map"></calcite-action>
+      <calcite-action text="Basemaps" icon="layer-basemap"></calcite-action>
+      <calcite-action text="Layers" icon="layers"></calcite-action>
       <calcite-action text="Filter" icon="filter"></calcite-action>
-      <calcite-action text="Layers" icon="layers"></calcite-action>
-      <calcite-action text="Basemaps" icon="layer-basemap"></calcite-action>
-      <calcite-action text="Layers" icon="layers"></calcite-action>
-      <calcite-action text="Basemaps" icon="layer-basemap"></calcite-action>
+      <calcite-action text="Add" icon="plus"></calcite-action>
     </calcite-action-bar>
   </calcite-panel>
 
 
-  <calcite-modal aria-labelledby="modal-title" id="splash" scale="s" width="s">
+  <calcite-modal aria-labelledby="modal-title" id="splash" scale="s" width="s" close-button-disabled>
     <div slot="header">
-      Welcome
+      Welcome to South Mountain!
     </div>
 
     <div slot="content">
-      The purpose of this application...
+      <p>This application serves as your guide to the trails of South Mountain Park & Preserve in Phoenix, Arizona.
+      </p>
+      <p>Intended to give you an overview of the mountain, this app can show you the trails you may encounter, the
+      facilities at your disposal, and you can even add your own adventures to our collection by sharing your favorite
+      features or wildlife sightings.
+      </p>
+      <p>
+      You are only a few clicks away from creating your next experience at South Mountain!
+      </p>
     </div>
+    <calcite-button slot="primary" width="full" id="splash-btn">
+      Let's Go!
+    </calcite-button>
   </calcite-modal>
 
 
