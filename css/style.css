@@ -18,10 +18,19 @@ html, body {
   background-color: #800000;
   margin: 0;
   color: #FFFFFF;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 70px;
+  z-index: 3;
 }
 
 #map-panel {
+  position: fixed;
+  top: 70;
+  left: 0;
+  right: 0;
   height: calc(100vh - 140px);
 }
 
