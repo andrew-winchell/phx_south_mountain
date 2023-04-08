@@ -7,7 +7,8 @@ require([
 
     // Widgets
     "esri/widgets/Home",
-    "esri/widgets/Compass"
+    "esri/widgets/Compass",
+    "esri/widgets/BasemapGallery"
 ], function (
     esriConfig,
     Map,
@@ -15,7 +16,8 @@ require([
     SceneView,
     FeatureLayer,
     Home,
-    Compass
+    Compass,
+    BasemapGallery
 ) {
     // AGOL Application API Key
     esriConfig.apiKey = "AAPK28bbd625223944fda166a8e0a8254aefSG3RhDzAVGDPJhKABYkM6niDY74cl7GrhgpmWGBYEyWj_gn0eCiL-0HicgVsUG-s";
@@ -67,6 +69,16 @@ require([
         position: "top-left",
         index: 2
     });
+    const basemapGallery2D = new BasemapGallery({
+        view: mapView,
+        selectionEnabled: true,
+        container: "basemap-container"
+    });
+    const basemapGallery3D = new BasemapGallery({
+        view: sceneView,
+        selectionEnabled: true,
+        container: "basemap-container"
+    });
 
     // Splash Modal
     $(document).ready(() => {
@@ -77,6 +89,14 @@ require([
         $("#splash")[0].open = false;
     })
 
+    // Viewer
+    $("#view2d").on("click", () => {
+        switchView();
+    });
+    $("#view3d").on("click", () => {
+        switchView();
+    });
+
     function switchView () {
         const is3D = appConfig.activeView.type === "3d";
         const activeViewpoint = appConfig.activeView.viewpoint.clone();
@@ -86,11 +106,17 @@ require([
             appConfig.mapView.viewpoint = activeViewpoint;
             appConfig.mapView.container = appConfig.container;
             appConfig.activeView = appConfig.mapView;
+
+            $("#view3d")[0].hidden = false;
+            $("#view2d")[0].hidden = true;
         } else {
             appConfig.sceneView.viewpoint = activeViewpoint;
             appConfig.sceneView.container = appConfig.container;
             appConfig.activeView = appConfig.sceneView;
             appConfig.sceneView.map.basemap = "satellite";
+
+            $("#view3d")[0].hidden = true;
+            $("#view2d")[0].hidden = false;
         }
     }
 });

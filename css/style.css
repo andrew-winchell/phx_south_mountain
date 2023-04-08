@@ -42,3 +42,10 @@ html, body {
   right: 0;
   height: fit-content;
 }
+
+.basemap-container {
+  position: relative;
+  top: 70;
+  height: calc(100vh - 140px);
+  width: 50%;
+}
