@@ -49,3 +49,9 @@ html, body {
   height: calc(100vh - 140px);
   width: fit-content !important;
 }
+
+#info-btn {
+  position: fixed;
+  left: 8;
+  top: 12.5;
+}

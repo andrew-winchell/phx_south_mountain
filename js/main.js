@@ -87,7 +87,12 @@ require([
 
     $("#splash-btn").on("click", (e) => {
         $("#splash")[0].open = false;
-    })
+    });
+
+    // Information Modal
+    $("#info-btn").on("click", (e) => {
+        $("#info")[0].open = true;
+    });
 
     // Viewer
     $("#view2d").on("click", () => {

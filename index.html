@@ -27,6 +27,7 @@
 
   <h2 id="header" slot="header">
     <span>South Mountain<br>Park & Preserve</span>
+    <calcite-button id="info-btn" icon-start="information-f" appearance="transparent" kind="inverse" scale="l"></calcite-button>
   </h2>
 
   <calcite-panel id="map-panel"></calcite-panel>
@@ -38,7 +39,7 @@
       <calcite-action text="Basemaps" icon="layer-basemap" id="basemaps"></calcite-action>
       <calcite-action text="Layers" icon="layers"></calcite-action>
       <calcite-action text="Filter" icon="filter"></calcite-action>
-      <calcite-action text="Add" icon="plus"></calcite-action>
+      <calcite-action text="Contribute" icon="plus"></calcite-action>
     </calcite-action-bar>
   </calcite-panel>
 
@@ -57,11 +58,13 @@
     </div>
 
     <div slot="content">
-      <p>This application serves as your guide to the trails of South Mountain Park & Preserve in Phoenix, Arizona.
+      <p>
+        This application serves as your guide to the trails of South Mountain Park & Preserve in Phoenix, Arizona.
       </p>
-      <p>Intended to give you an overview of the mountain, this app can show you the trails you may encounter, the
-      facilities at your disposal, and you can even add your own adventures to our collection by sharing your favorite
-      features or wildlife sightings.
+      <p>
+        Intended to give you an overview of the mountain, this app can show you the trails you may encounter, the
+        facilities at your disposal, and you can even add your own adventures to our collection by sharing your favorite
+        features or wildlife sightings.
       </p>
       <p>
       You are only a few clicks away from creating your next experience at South Mountain!
@@ -72,7 +75,57 @@
     </calcite-button>
   </calcite-modal>
 
+  <calcite-modal aria-labeledby="modal-title" id="info" scale="s" width="s">
+    <div slot="header">
+      Getting to know the app
+    </div>
 
+    <div slot="content">
+      <h4>
+        Overview
+      </h4>
+      <p>
+        The intended purpose of this application is for recreational users of the South Mountain to prepare for
+        an upcoming trip, assist in navigation while exploring, and contributing to an open source of information;
+        leaving your own footprint behind for others to see.
+      </p>
+      <h4>
+        2D/3D Controls
+      </h4>
+      <p>
+        The first control on the bottom widget panel controls the dimensions of the map viewer. You have the option
+        to view the application as a flat 2D plane from above, or you can convert to 3D and explore the mountains up
+        close and get a better understand of the terrain. Control the map on a mobile device with the standard pinch,
+        tap, and drag actions.
+      </p>
+      <h4>
+        Basemap Gallery
+      </h4>
+      <p>
+        Opening the basemap gallery will provide you with all of the options available to change the map overlay of
+        the application. Aerial basemaps work well for viewing 3D environments but feel free to explore all of the
+        options and choose which one is your favorite.
+      </p>
+      <h4>
+        Layers
+      </h4>
+      <p>
+        ...
+      </p>
+      <h4>
+        Filtering
+      </h4>
+      <p>
+        ...
+      </p>
+      <h4>
+        Contributing
+      </h4>
+      <p>
+        ...
+      </p>
+    </div>
+  </calcite-modal>
 
   <!--Reference JS files and libraries-->
   <script src="lib/jquery-3.6.0.js"></script>
