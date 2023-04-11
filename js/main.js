@@ -109,14 +109,17 @@ require([
 
     function openGallery () {
         if (appConfig.activeView.type === "3d") {
-            $("#basemaps-3d")[0].hidden = false;
-
+            $("#basemaps-3d")[0].hidden === false ? $("#basemaps-3d")[0].hidden = true : $("#basemaps-3d")[0].hidden = false;
         } else if (appConfig.activeView.type === "2d") {
-            $("#basemaps-2d")[0].hidden = false;
+            $("#basemaps-2d")[0].hidden === false ? $("#basemaps-2d")[0].hidden = true : $("#basemaps-2d")[0].hidden = false;
         }
     }
 
     function switchView () {
+        if ($("#basemaps-2d")[0].hidden === false || $("#basemaps-3d")[0].hidden === false) {
+            $("#basemaps-2d")[0].hidden = true;
+            $("#basemaps-3d")[0].hidden = true;
+        }
         const is3D = appConfig.activeView.type === "3d";
         const activeViewpoint = appConfig.activeView.viewpoint.clone();
         appConfig.activeView.container = null;
