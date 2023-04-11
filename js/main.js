@@ -72,12 +72,12 @@ require([
     const basemapGallery2D = new BasemapGallery({
         view: mapView,
         selectionEnabled: true,
-        container: "basemap-container"
+        container: "basemaps-2d"
     });
     const basemapGallery3D = new BasemapGallery({
         view: sceneView,
         selectionEnabled: true,
-        container: "basemap-container"
+        container: "basemaps-3d"
     });
 
     // Splash Modal
@@ -97,6 +97,20 @@ require([
         switchView();
     });
 
+    // Basemaps
+    $("#basemaps").on("click", (e) => {
+        openGallery();
+    });
+
+    function openGallery () {
+        if (appConfig.activeView.type === "3d") {
+            $("#basemaps-3d")[0].hidden = false;
+
+        } else if (appConfig.activeView.type === "2d") {
+            $("#basemaps-2d")[0].hidden = false;
+        }
+    }
+
     function switchView () {
         const is3D = appConfig.activeView.type === "3d";
         const activeViewpoint = appConfig.activeView.viewpoint.clone();
@@ -109,11 +123,11 @@ require([
 
             $("#view3d")[0].hidden = false;
             $("#view2d")[0].hidden = true;
+
         } else {
             appConfig.sceneView.viewpoint = activeViewpoint;
             appConfig.sceneView.container = appConfig.container;
             appConfig.activeView = appConfig.sceneView;
-            appConfig.sceneView.map.basemap = "satellite";
 
             $("#view3d")[0].hidden = true;
             $("#view2d")[0].hidden = false;

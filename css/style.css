@@ -47,5 +47,5 @@ html, body {
   position: relative;
   top: 70;
   height: calc(100vh - 140px);
-  width: 50%;
+  width: fit-content !important;
 }
