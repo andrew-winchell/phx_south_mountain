@@ -44,10 +44,10 @@ html, body {
 }
 
 .basemap-container {
-  position: absolute !important;
+  position: fixed !important;
   top: 100;
   left: 0;
-  height: calc(100vh - 140px);
+  height: calc(100vh - 300px);
   width: fit-content !important;
 }
 
