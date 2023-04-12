@@ -8,7 +8,8 @@ require([
     // Widgets
     "esri/widgets/Home",
     "esri/widgets/Compass",
-    "esri/widgets/BasemapGallery"
+    "esri/widgets/BasemapGallery",
+    "esri/widgets/LayerList"
 ], function (
     esriConfig,
     Map,
@@ -17,14 +18,20 @@ require([
     FeatureLayer,
     Home,
     Compass,
-    BasemapGallery
+    BasemapGallery,
+    LayerList
 ) {
     // AGOL Application API Key
     esriConfig.apiKey = "AAPK28bbd625223944fda166a8e0a8254aefSG3RhDzAVGDPJhKABYkM6niDY74cl7GrhgpmWGBYEyWj_gn0eCiL-0HicgVsUG-s";
 
+    const expLyr = new FeatureLayer({
+        url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Explore/FeatureServer/0"
+    });
+
     const map = new Map({
         basemap: "topo-vector",
-        ground: "world-elevation"
+        ground: "world-elevation",
+        layers: [expLyr]
     });
     const mapView = new MapView({
         container: "map-panel",

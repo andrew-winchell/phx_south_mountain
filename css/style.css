@@ -45,9 +45,10 @@ html, body {
 
 .basemap-container {
   position: fixed !important;
-  padding-top: 70;
+  padding-top: 70px;
+  padding-bottom: 70px;
   left: 0;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 70px);
   width: fit-content !important;
 }
 
