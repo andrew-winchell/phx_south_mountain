@@ -54,8 +54,7 @@ require([
                 type: "attachments"
             }
         ]
-    }
-
+    };
     const expLyr = new FeatureLayer({
         url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Explore/FeatureServer/0"
     });
@@ -75,6 +74,14 @@ require([
     const sceneView = new SceneView({
         map: map
     });
+    mapView.popup.dockOptions = {
+        buttonEnabled: false,
+        breakpoint: {
+            width: 600,
+            height: 1000
+        },
+        position: "top-right"
+    }
 
     const appConfig = {
         mapView: mapView,
