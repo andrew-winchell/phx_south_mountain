@@ -47,7 +47,7 @@ html, body {
   position: fixed !important;
   bottom: 70;
   left: 0;
-  height: calc(100vh - 210px);
+  height: calc(100vh - 140px);
   width: fit-content !important;
 }
 
