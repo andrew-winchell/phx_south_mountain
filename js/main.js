@@ -74,14 +74,7 @@ require([
     const sceneView = new SceneView({
         map: map
     });
-    mapView.popup.dockOptions = {
-        buttonEnabled: false,
-        breakpoint: {
-            width: 600,
-            height: 1000
-        },
-        position: "top-right"
-    }
+    mapView.popup.dockEnabled = false;
 
     const appConfig = {
         mapView: mapView,
