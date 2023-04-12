@@ -94,6 +94,11 @@ require([
         $("#info")[0].open = true;
     });
 
+    // Form Modal
+    $("#contribute").on("click", (e) => {
+        $("#form")[0].open = true;
+    });
+
     // Viewer
     $("#view2d").on("click", () => {
         switchView();
