@@ -187,7 +187,8 @@ require([
             $("#latitude").val("");
             $("#longitude").val("");
             $("#img-upload").val("");
-            $("#exp-type").val("");
+            $("#scenery")[0].checked = false;
+            $("#wildlife")[0].checked = false;
         } catch (error) {
             $("#form-alert")[0].open = true;
         }
