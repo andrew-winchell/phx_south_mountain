@@ -25,6 +25,12 @@
 <body>
   <!--<calcite-loader></calcite-loader>-->
 
+  <calcite-alert id="location-alert" icon="exclamation-mark-triangle" kind="danger" label="An airline alert"
+                 placement="top" auto-close="true" auto-close-duration="medium">
+    <div slot="title">You did not share your location</div>
+    <div slot="message">By not sharing your location, we are unable to share your experience with the community.</div>
+  </calcite-alert>
+
   <h2 id="header" slot="header">
     <span>South Mountain<br>Park & Preserve</span>
     <calcite-button id="info-btn" icon-start="information-f" appearance="transparent" kind="inverse" scale="l"></calcite-button>
@@ -129,8 +135,43 @@
   </calcite-modal>
 
   <calcite-modal aria-labeledby="modal-title" id="form" scale="s" width="s">
+    <div slot="header">
+      Share your experience
+    </div>
     <div slot="content">
-      <calcite-input scale="m" type="file" accepts="image/*" capture></calcite-input>
+      <calcite-label>
+        What did you see?
+        <calcite-radio-button-group name="ImgType" id="exp-type" layout="horizontal" required>
+          <calcite-label layout="inline">
+            <calcite-radio-button value="scenery"></calcite-radio-button>
+            Scenery
+          </calcite-label>
+          <calcite-label layout="inline">
+            <calcite-radio-button value="wildlife"></calcite-radio-button>
+            Wildlife
+          </calcite-label>
+        </calcite-radio-button-group>
+      </calcite-label>
+
+      <calcite-input scale="m" id="img-upload" type="file" accepts="image/*" capture></calcite-input>
+
+      <br>
+
+      <calcite-button id="location" round>Share location</calcite-button>
+
+      <br>
+
+      <calcite-label layout="inline-space-between">
+        Latitude
+        <calcite-input scale="m" type="number" id="latitude" read-only></calcite-input>
+      </calcite-label>
+      <calcite-label layout="inline-space-between">
+        Longitude
+        <calcite-input scale="m" type="number" id="longitude" read-only></calcite-input>
+      </calcite-label>
+
+      <calcite-button scale="m" id="submit" round>Submit</calcite-button>
+
     </div>
   </calcite-modal>
 

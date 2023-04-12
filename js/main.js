@@ -99,6 +99,27 @@ require([
         $("#form")[0].open = true;
     });
 
+    // Get User Location
+    $("#location").on("click", (e) => {
+        navigator.geolocation.getCurrentPosition(locSuccess, locError)
+    });
+
+    // Successful Position
+    const locSuccess = (position) => {
+        $("#latitude").val(position.coords.latitude);
+        $("#longitude").val(position.coords.longitude);
+    };
+
+    // Position Error
+    const locError = (error) => {
+        $("#location-alert")[0].open = true;
+    };
+
+    // Form Submit
+    $("#submit").on("click", (e) => {
+        validateForm()
+    });
+
     // Viewer
     $("#view2d").on("click", () => {
         switchView();
@@ -145,5 +166,24 @@ require([
             $("#view3d")[0].hidden = true;
             $("#view2d")[0].hidden = false;
         }
+    }
+
+    function validateForm () {
+        try {
+            const lat = $("#latitude").val();
+            const lon = $("#longitude").val();
+            const img = $("#img-upload")[0].value;
+            const exp = $("#exp-type")[0].selectedItem.value;
+            const items = [lat,lon,img,exp];
+            for (const i of items) {
+                if (i === "") {
+                    throw 500;
+                }
+            }
+            // send items to database
+        } catch (error) {
+            console.log(error)
+        }
+
     }
 });

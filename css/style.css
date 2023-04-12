@@ -56,3 +56,14 @@ html, body {
   left: 8;
   top: 12.5;
 }
+
+#location {
+  display: flex !important;
+}
+
+#submit {
+  height: fit-content;
+  width: fit-content;
+  position: absolute !important;
+  right: 12px
+}
