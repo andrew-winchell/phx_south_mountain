@@ -41,6 +41,7 @@ html, body {
   left: 0;
   right: 0;
   height: fit-content;
+  z-index: 1000;
 }
 
 .basemap-container {
