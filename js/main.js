@@ -181,8 +181,15 @@ require([
                 }
             }
             // send items to database
+
+            // close and clear form
+            $("#form")[0].open = false;
+            $("#latitude").val("");
+            $("#longitude").val("");
+            $("#img-upload").val("");
+            $("#exp-type").val("");
         } catch (error) {
-            console.log(error)
+            $("#form-alert")[0].open = true;
         }
 
     }

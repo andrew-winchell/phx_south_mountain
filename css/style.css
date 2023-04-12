@@ -67,3 +67,8 @@ html, body {
   position: absolute !important;
   right: 12px
 }
+
+#form-alert, #location-alert {
+  z-index: 10;
+  position: fixed !important;
+}
