@@ -9,7 +9,8 @@ require([
     "esri/widgets/Home",
     "esri/widgets/Compass",
     "esri/widgets/BasemapGallery",
-    "esri/widgets/LayerList"
+    "esri/widgets/LayerList",
+    "esri/widgets/Popup"
 ], function (
     esriConfig,
     Map,
@@ -19,14 +20,46 @@ require([
     Home,
     Compass,
     BasemapGallery,
-    LayerList
+    LayerList,
+    Popup
 ) {
     // AGOL Application API Key
     esriConfig.apiKey = "AAPK28bbd625223944fda166a8e0a8254aefSG3RhDzAVGDPJhKABYkM6niDY74cl7GrhgpmWGBYEyWj_gn0eCiL-0HicgVsUG-s";
 
+    const expPopup = {
+        title: "Explore",
+        content: [
+            {
+                type: "fields",
+                fieldInfos: [
+                    {
+                        fieldName: "Exp_Type",
+                        label: "Experience"
+                    },
+                    {
+                        fieldName: "Description",
+                        label: "Description"
+                    },
+                    {
+                        fieldName: "Latitude",
+                        label: "Latitude"
+                    },
+                    {
+                        fieldName: "Longitude",
+                        label: "Longitude"
+                    },
+                ]
+            },
+            {
+                type: "attachments"
+            }
+        ]
+    }
+
     const expLyr = new FeatureLayer({
         url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Explore/FeatureServer/0"
     });
+    expLyr.popupTemplate = expPopup;
 
     const map = new Map({
         basemap: "topo-vector",
