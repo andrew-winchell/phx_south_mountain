@@ -47,7 +47,7 @@ html, body {
   position: fixed !important;
   padding-top: 70;
   left: 0;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 80px);
   width: fit-content !important;
 }
 
