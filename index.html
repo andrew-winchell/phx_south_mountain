@@ -49,21 +49,18 @@
       <calcite-action text="3D View" icon="globe" id="view3d"></calcite-action>
       <calcite-action text="2D View" icon="map" id="view2d" hidden></calcite-action>
       <calcite-action text="Basemaps" icon="layer-basemap" id="basemaps"></calcite-action>
-      <calcite-action text="Layers" icon="layers"></calcite-action>
+      <calcite-action text="Layers" icon="layers" id="layers"></calcite-action>
       <calcite-action text="Filter" icon="filter"></calcite-action>
       <calcite-action text="Contribute" icon="plus" id="contribute"></calcite-action>
     </calcite-action-bar>
   </calcite-panel>
 
-  <calcite-panel class="basemap-container" id="basemaps-2d" hidden>
-    <span slot="header">Basemap Gallery</span>
-  </calcite-panel>
+  <calcite-panel class="basemap-container" id="basemaps-2d" hidden></calcite-panel>
+  <calcite-panel class="basemap-container" id="basemaps-3d" hidden></calcite-panel>
 
-  <calcite-panel class="basemap-container" id="basemaps-3d" hidden>
-    <span slot="title">Basemap Gallery</span>
-  </calcite-panel>
-
-
+  <calcite-panel class="layers-container" id="layers-2d" hidden></calcite-panel>
+  <calcite-panel class="layers-container" id="layers-3d" hidden></calcite-panel>
+]
   <calcite-modal aria-labelledby="modal-title" id="splash" scale="s" width="s" close-button-disabled>
     <div slot="header">
       Welcome to South Mountain!

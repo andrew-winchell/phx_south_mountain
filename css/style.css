@@ -47,9 +47,18 @@ html, body {
 .basemap-container {
   position: fixed !important;
   padding-top: 70px;
-  padding-bottom: 70px;
+  margin-bottom: 70px;
   left: 0;
   height: calc(100vh - 70px);
+  width: fit-content !important;
+}
+
+.layers-container {
+  position: fixed !important;
+  padding-top: 70px !important;
+  margin-bottom: 70px;
+  left: 0;
+  height: fit-content !important;
   width: fit-content !important;
 }
 

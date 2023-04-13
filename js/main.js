@@ -127,6 +127,16 @@ require([
         selectionEnabled: true,
         container: "basemaps-3d"
     });
+    const layerList2D = new LayerList({
+        view: mapView,
+        container: "layers-2d",
+        visible: false
+    });
+    const layerList3D = new LayerList({
+        view: sceneView,
+        container: "layers-3d",
+        visible: false
+    });
 
     // Splash Modal
     $(document).ready(() => {
@@ -180,6 +190,19 @@ require([
     $("#basemaps").on("click", (e) => {
         openGallery();
     });
+
+    // Layers
+    $("#layers").on("click", (e) => {
+        openLayerList();
+    });
+
+    function openLayerList () {
+        if (appConfig.activeView.type === "3d") {
+            layerList3D.visible === false ? layerList3D.visible = true : layerList3D.visible = false;
+        } else if (appConfig.activeView.type === "2d") {
+            layerList2D.visible === false ? layerList2D.visible = true : layerList2D.visible = false;
+        }
+    }
 
     function openGallery () {
         if (appConfig.activeView.type === "3d") {
