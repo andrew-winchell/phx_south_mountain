@@ -140,7 +140,10 @@ require([
                     },
                     {
                         fieldName: "distance",
-                        label: "Distance (miles)"
+                        label: "Distance (miles)",
+                        format: {
+                            places: 2
+                        }
                     },
                     {
                         fieldName: "elevation_change",
