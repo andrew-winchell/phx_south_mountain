@@ -55,8 +55,8 @@ html, body {
 
 .layers-container {
   position: fixed !important;
-  margin-top: calc(100vh - 140px) !important;
-  margin-bottom: 70px !important;
+  margin-top: 70px !important;
+  margin-bottom: 70px;
   left: 0;
   height: fit-content !important;
   width: fit-content !important;
