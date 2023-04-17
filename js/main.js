@@ -4,6 +4,7 @@ require([
     "esri/views/MapView",
     "esri/views/SceneView",
     "esri/layers/FeatureLayer",
+    "esri/Graphic",
 
     // Widgets
     "esri/widgets/Home",
@@ -17,6 +18,7 @@ require([
     MapView,
     SceneView,
     FeatureLayer,
+    Graphic,
     Home,
     Compass,
     BasemapGallery,
@@ -393,26 +395,79 @@ require([
         try {
             const lat = $("#latitude").val();
             const lon = $("#longitude").val();
-            const img = $("#img-upload")[0].value;
+            const desc = $("#exp-desc").val();
+            const img = $("#img-upload").val();
             const exp = $("#exp-type")[0].selectedItem.value;
-            const items = [lat,lon,img,exp];
+            const items = [lat,lon,img,exp, desc];
             for (const i of items) {
                 if (i === "") {
                     throw 500;
                 }
             }
             // send items to database
+            let inserts = [];
+            let graphic = new Graphic({
+                geometry: {
+                    type: "point",
+                    latitude: lat,
+                    longitude: lon
+                },
+                attributes: {
+                    "Latitude": lat,
+                    "Longitude": lon,
+                    "Exp_Type": exp,
+                    "Description": desc
+                }
+            });
+            inserts.push(graphic);
+
+            const edits = {
+                addFeatures: inserts
+            };
+            applyEditsToLayer(edits, img);
 
             // close and clear form
             $("#form")[0].open = false;
             $("#latitude").val("");
             $("#longitude").val("");
             $("#img-upload").val("");
+            $("#exp-desc").val("");
             $("#scenery")[0].checked = false;
             $("#wildlife")[0].checked = false;
         } catch (error) {
             $("#form-alert")[0].open = true;
         }
 
+    }
+
+    function applyEditsToLayer (edits, img) {
+        expLyr
+            .applyEdits(edits)
+            .then((editResults) => {
+                console.log(editResults);
+                console.log(img);
+                let attachment = [
+                    {
+                        feature: editResults.addFeatureResults[0],
+                        attachment: {
+                            globalId: "8c4d6085-a33c-42a0-8e11-21e9528bca0d",
+                            name: "image",
+                            //contentType: "image/*",
+                            data: img
+                        }
+                    }
+                ];
+
+                const attEdits = {
+                    addAttachments: attachment
+                };
+
+                const options = {
+                    globalIdUsed: true,
+                    rollbackOnFailureEnabled: true
+                };
+
+                expLyr.applyEdits(attEdits, options);
+            });
     }
 });
