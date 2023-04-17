@@ -50,7 +50,7 @@
       <calcite-action text="2D View" icon="map" id="view2d" hidden></calcite-action>
       <calcite-action text="Basemaps" icon="layer-basemap" id="basemaps"></calcite-action>
       <calcite-action text="Layers" icon="layers" id="layers"></calcite-action>
-      <calcite-action text="Filter" icon="filter"></calcite-action>
+      <calcite-action text="Filter" icon="filter" id="filter"></calcite-action>
       <calcite-action text="Contribute" icon="plus" id="contribute"></calcite-action>
     </calcite-action-bar>
   </calcite-panel>
@@ -60,6 +60,16 @@
 
   <calcite-panel class="layers-container" id="layers-2d" hidden></calcite-panel>
   <calcite-panel class="layers-container" id="layers-3d" hidden></calcite-panel>
+
+  <calcite-panel class="filters-container" id="filter-widget" hidden>
+    <div class="filter-title">Filter Trail Difficulty Level</div>
+    <div id="trail-filter">
+      <div class="trail-item" trail-level="Easy">Easy</div>
+      <div class="trail-item" trail-level="Moderate">Moderate</div>
+      <div class="trail-item" trail-level="Moderate/Difficult">Moderate/Difficult</div>
+      <div class="trail-item" trail-level="Difficult">Difficult</div>
+    </div>
+  </calcite-panel>
 ]
   <calcite-modal aria-labelledby="modal-title" id="splash" scale="s" width="s" close-button-disabled>
     <div slot="header">
@@ -173,11 +183,11 @@
 
       <calcite-label layout="inline-space-between">
         Latitude
-        <calcite-input scale="m" type="number" id="latitude" read-only></calcite-input>
+        <calcite-input scale="m" type="number" id="latitude"></calcite-input>
       </calcite-label>
       <calcite-label layout="inline-space-between">
         Longitude
-        <calcite-input scale="m" type="number" id="longitude" read-only></calcite-input>
+        <calcite-input scale="m" type="number" id="longitude"></calcite-input>
       </calcite-label>
 
       <calcite-button scale="m" id="submit" round>Submit</calcite-button>

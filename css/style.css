@@ -62,6 +62,15 @@ html, body {
   width: fit-content !important;
 }
 
+.filters-container {
+  position: fixed !important;
+  margin-top: 70px !important;
+  margin-bottom: 70px !important;
+  left: 0;
+  height: fit-content !important;
+  width: fit-content !important;
+}
+
 #info-btn {
   position: fixed;
   left: 8;
@@ -87,3 +96,25 @@ html, body {
 .esri-popup__main-container{
   margin-bottom: 70px;
  }
+
+.filter-title {
+  font-weight: bold;
+  font-size: medium;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.trail-item {
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.trail-item:focus {
+  background-color: dimgrey;
+}
+
+.trail-item:hover {
+  background-color: dimgrey;
+}

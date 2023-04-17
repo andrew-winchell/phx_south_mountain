@@ -82,7 +82,7 @@ require([
         ]
     };
     const expLyr = new FeatureLayer({
-        url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Explore/FeatureServer/0",
+        url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/South_Mountain_Park_Phx/FeatureServer/4",
         renderer: expSymbol,
         elevationInfo: "on-the-ground"
     });
@@ -120,7 +120,7 @@ require([
         }
     }
     const trailheadsLyr = new FeatureLayer({
-        url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/SouthMountain/FeatureServer/0",
+        url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/South_Mountain_Park_Phx/FeatureServer/1",
         elevationInfo: "on-the-ground",
         renderer: trailheadsSymbol
     });
@@ -206,16 +206,26 @@ require([
         ]
     };
     const trailsLyr = new FeatureLayer({
-        url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/SouthMountain/FeatureServer/1",
+        url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/South_Mountain_Park_Phx/FeatureServer/0",
         elevationInfo: "on-the-ground",
         renderer: trailsSymbol
     });
     trailsLyr.popupTemplate = trailsPopup;
 
+    const parkingLyr = new FeatureLayer({
+        url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/South_Mountain_Park_Phx/FeatureServer/2",
+        elevationInfo: "on-the-ground"
+    });
+
+    const buildingLyr = new FeatureLayer({
+        url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/South_Mountain_Park_Phx/FeatureServer/3",
+        elevationInfo: "on-the-ground"
+    });
+
     const map = new Map({
         basemap: "topo-vector",
         ground: "world-elevation",
-        layers: [trailsLyr, expLyr, trailheadsLyr]
+        layers: [trailsLyr, expLyr, trailheadsLyr, parkingLyr, buildingLyr]
     });
     const mapView = new MapView({
         container: "map-panel",
@@ -348,6 +358,16 @@ require([
         openLayerList();
     });
 
+    // Filters
+    $("#filter").on("click", (e) => {
+        openFilters();
+    });
+
+    // Filter trail difficulty
+    $("#trail-filter").on("click", (e) => {
+        filterByDifficulty(e.target.getAttribute("trail-level"));
+    });
+
     function openLayerList () {
         if (appConfig.activeView.type === "3d") {
             layerList3D.visible === false ? layerList3D.visible = true : layerList3D.visible = false;
@@ -368,7 +388,11 @@ require([
         if ($("#basemaps-2d")[0].hidden === false || $("#basemaps-3d")[0].hidden === false) {
             $("#basemaps-2d")[0].hidden = true;
             $("#basemaps-3d")[0].hidden = true;
-        }
+        };
+        if ($("#filter-widget")[0].hidden === false) {
+            $("#filter-widget")[0].hidden = true;
+        };
+
         const is3D = appConfig.activeView.type === "3d";
         const activeViewpoint = appConfig.activeView.viewpoint.clone();
         appConfig.activeView.container = null;
@@ -469,5 +493,18 @@ require([
 
                 expLyr.applyEdits(attEdits, options);
             });
+    }
+
+    function openFilters () {
+        const filterWidget = $("#filter-widget")[0];
+        filterWidget.hidden === false ? filterWidget.hidden = true : filterWidget.hidden = false;
+    }
+
+    function filterByDifficulty (difficulty) {
+        if (trailsLyr.definitionExpression === "difficulty = '" + difficulty + "'"){
+            trailsLyr.definitionExpression = "";
+        } else {
+            trailsLyr.definitionExpression = "difficulty = '" + difficulty + "'";
+        }
     }
 });
