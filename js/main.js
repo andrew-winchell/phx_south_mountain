@@ -84,7 +84,8 @@ require([
     const expLyr = new FeatureLayer({
         url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/South_Mountain_Park_Phx/FeatureServer/4",
         renderer: expSymbol,
-        elevationInfo: "on-the-ground"
+        elevationInfo: "on-the-ground",
+        title: "Explore"
     });
     expLyr.popupTemplate = expPopup;
 
@@ -118,11 +119,12 @@ require([
             height: "20px",
             width: "20px"
         }
-    }
+    };
     const trailheadsLyr = new FeatureLayer({
         url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/South_Mountain_Park_Phx/FeatureServer/1",
         elevationInfo: "on-the-ground",
-        renderer: trailheadsSymbol
+        renderer: trailheadsSymbol,
+        title: "Trailheads"
     });
     trailheadsLyr.popupTemplate = trailheadsPopup;
 
@@ -208,19 +210,65 @@ require([
     const trailsLyr = new FeatureLayer({
         url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/South_Mountain_Park_Phx/FeatureServer/0",
         elevationInfo: "on-the-ground",
-        renderer: trailsSymbol
+        renderer: trailsSymbol,
+        title: "Trails"
     });
     trailsLyr.popupTemplate = trailsPopup;
 
+    const parkingSymbol = {
+        type: "simple",
+        symbol: {
+            type: "picture-marker",
+            url: "data:image/png;base64,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",
+            height: "20px",
+            width: "20px"
+        }
+    };
     const parkingLyr = new FeatureLayer({
         url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/South_Mountain_Park_Phx/FeatureServer/2",
-        elevationInfo: "on-the-ground"
+        elevationInfo: "on-the-ground",
+        renderer: parkingSymbol,
+        title: "Parking"
     });
 
+    const buildingPopup = {
+        title: "{BldgType}",
+        content: [
+            {
+                type: "fields",
+                fieldInfos: [
+                    {
+                        fieldName: "BldgType",
+                        label: "Building Type"
+                    },
+                    {
+                        fieldName: "amenities",
+                        label: "Amenities"
+                    },
+                    {
+                        fieldName: "hours",
+                        label: "Hours"
+                    }
+                ]
+            }
+        ]
+    };
+    const buildingSymbol = {
+        type: "simple",
+        symbol: {
+            type: "picture-marker",
+            url: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHkAAAB5CAYAAAAd+o5JAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAADKGlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMwMTQgNzkuMTU2Nzk3LCAyMDE0LzA4LzIwLTA5OjUzOjAyICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxNCAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo1MTZBMTZERDZDMzExMUU0QTM3RThDNzNCRDk3QTcyQSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo1MTZBMTZERTZDMzExMUU0QTM3RThDNzNCRDk3QTcyQSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjUwRkYyOUVFNkMzMTExRTRBMzdFOEM3M0JEOTdBNzJBIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjUxNkExNkRDNkMzMTExRTRBMzdFOEM3M0JEOTdBNzJBIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hw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",
+            height: "20px",
+            width: "20px"
+        }
+    };
     const buildingLyr = new FeatureLayer({
         url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/South_Mountain_Park_Phx/FeatureServer/3",
-        elevationInfo: "on-the-ground"
+        elevationInfo: "on-the-ground",
+        renderer: buildingSymbol,
+        title: "Buildings"
     });
+    buildingLyr.popupTemplate = buildingPopup;
 
     const map = new Map({
         basemap: "topo-vector",
@@ -369,6 +417,10 @@ require([
     });
 
     function openLayerList () {
+        $("#filter-widget")[0].hidden = true;
+        $("#basemaps-2d")[0].hidden = true;
+        $("#basemaps-3d")[0].hidden = true;
+
         if (appConfig.activeView.type === "3d") {
             layerList3D.visible === false ? layerList3D.visible = true : layerList3D.visible = false;
         } else if (appConfig.activeView.type === "2d") {
@@ -377,6 +429,10 @@ require([
     }
 
     function openGallery () {
+        layerList2D.visible = false;
+        layerList3D.visible = false;
+        $("#filter-widget")[0].hidden = true;
+
         if (appConfig.activeView.type === "3d") {
             $("#basemaps-3d")[0].hidden === false ? $("#basemaps-3d")[0].hidden = true : $("#basemaps-3d")[0].hidden = false;
         } else if (appConfig.activeView.type === "2d") {
@@ -496,6 +552,11 @@ require([
     }
 
     function openFilters () {
+        layerList2D.visible = false;
+        layerList3D.visible = false;
+        $("#basemaps-2d")[0].hidden = true;
+        $("#basemaps-3d")[0].hidden = true;
+
         const filterWidget = $("#filter-widget")[0];
         filterWidget.hidden === false ? filterWidget.hidden = true : filterWidget.hidden = false;
     }
